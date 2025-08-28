@@ -76,7 +76,7 @@ v.assign(100, -1);  // 变成长度为 100，全部是 -1
 
 19.向上取整公式：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250803191411847.png" alt="image-20250803191411847" style="zoom: 40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250803191411847.png" alt="image-20250803191411847" style="zoom: 40%;" />
 
 20.二维数组创建：
 
@@ -159,11 +159,11 @@ int result = std::max({a, b, c});  // ✅ C++11 起支持的写法
 
 29.创建堆：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250822235911302.png" alt="image-20250822235911302" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822235911302.png" alt="image-20250822235911302" style="zoom:50%;" />
 
 多个元素可以用pair：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250822235938794.png" alt="image-20250822235938794" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822235938794.png" alt="image-20250822235938794" style="zoom:50%;" />
 
 greater会自动比较字典序，第一个相等会自动比第二个，哪个小哪个排前面。
 
@@ -208,7 +208,7 @@ a x b得到：
 
 经验：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250726170426104.png" alt="image-20250726170426104" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250726170426104.png" alt="image-20250726170426104" style="zoom:50%;" />
 
 在写大数乘时，犯了个错误，这里单独看 `a[i] * b[j]` 是否超过 10 就提前进位了，其实是不对的。正确做法是：**先全部乘完加到 `res[i + j]` 上，再统一进位处理**。
 
@@ -246,7 +246,7 @@ $$
 
 ​	在快速幂中，指数被看作二进制。
 
-​	算法执行中，bash持有的值 = <u>当前对应的 <img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250726174603660.png" alt="image-20250726174603660" style="zoom: 50%;" /></u>，其中 i 是当前处理的二进制位编号（从低位开始数）。
+​	算法执行中，bash持有的值 = <u>当前对应的 <img src="images\LeetcodeLearningNotes\image-20250726174603660.png" alt="image-20250726174603660" style="zoom: 50%;" /></u>，其中 i 是当前处理的二进制位编号（从低位开始数）。
 
 | 二进制位数 i | 当前 base 的值             |
 | ------------ | -------------------------- |
@@ -314,7 +314,7 @@ int power(int a, int n) {
 
 值得注意的是，标记合数时，循环中j是从`i*i`开始标记，为什么不是`2*i`？这是在保证**<u>每个合数只被最小的质数标记一次</u>**。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250827172949160.png" alt="image-20250827172949160" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250827172949160.png" alt="image-20250827172949160" style="zoom:40%;" />
 
 # 递归是如何转为迭代的？
 
@@ -344,7 +344,7 @@ $$
 
 # 二叉树
 
-![图片](D:\TyporaFiles\Images\Leetcode刷题\640.webp)
+![图片](images\LeetcodeLearningNotes\640.webp)
 
 # 滑动窗口与双指针
 
@@ -374,13 +374,13 @@ $$
 
 进阶：
 
-[2779. 数组的最大美丽值](https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/)：<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250728165309623.png" alt="image-20250728165309623" style="zoom:25%;" />
+[2779. 数组的最大美丽值](https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/)：<img src="images\LeetcodeLearningNotes\image-20250728165309623.png" alt="image-20250728165309623" style="zoom:25%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250728170046261.png" alt="image-20250728170046261" style="zoom: 40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250728170046261.png" alt="image-20250728170046261" style="zoom: 40%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250728170118884.png" alt="image-20250728170118884" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250728170118884.png" alt="image-20250728170118884" style="zoom:40%;" />
 
-神了：![image-20250728170022627](D:\TyporaFiles\Images\Leetcode刷题\image-20250728170022627.png)
+神了：![image-20250728170022627](images\LeetcodeLearningNotes\image-20250728170022627.png)
 
 ### 2.求最短/最小子数组/越长越合法
 
@@ -450,9 +450,9 @@ public:
 
 自己非常艰难地过了：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250730191211103.png" alt="image-20250730191211103" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250730191211103.png" alt="image-20250730191211103" style="zoom:33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250730191225828.png" alt="image-20250730191225828" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250730191225828.png" alt="image-20250730191225828" style="zoom: 50%;" />
 
 ​	我自己的算法，这个会导致超时。
 
@@ -510,13 +510,13 @@ public:
 
 [611. 有效三角形的个数](https://leetcode.cn/problems/valid-triangle-number/)：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250731185620782.png" alt="image-20250731185620782" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731185620782.png" alt="image-20250731185620782" style="zoom:40%;" />
 
 把问题转化为：从 *nums* 中选三个数，满足 1≤*a*≤*b*≤*c* 且 *a*+*b*>*c* 的方案数。
 
 **枚举最长边+相向双指针**：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250731190023564.png" alt="image-20250731190023564" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731190023564.png" alt="image-20250731190023564" style="zoom:50%;" />
 
 最外层的循环是c在移动，内层有两个相向双指针i和j，初始值是0和right - 1.
 
@@ -575,7 +575,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1574. 删除最短的子数组使剩余数组有序](https://leetcode.cn/problems/shortest-subarray-to-be-removed-to-make-array-sorted/)：最终114/119
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250731235453665.png" alt="image-20250731235453665" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731235453665.png" alt="image-20250731235453665" style="zoom:50%;" />
 
 **写法一：枚举左端点，移动右端点**
 
@@ -591,7 +591,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1793. 好子数组的最大分数](https://leetcode.cn/problems/maximum-score-of-a-good-subarray/)：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250801160304461.png" alt="image-20250801160304461" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250801160304461.png" alt="image-20250801160304461" style="zoom:50%;" />
 
 **方法一：单调栈**
 
@@ -618,7 +618,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1089. 复写零](https://leetcode.cn/problems/duplicate-zeros/):
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802022019112.png" alt="image-20250802022019112" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022019112.png" alt="image-20250802022019112" style="zoom:50%;" />
 
 左边一个指针i，从下标0开始遍历arr，右边的指针j从n - 1开始遍历arr。j表示要从原arr中移除的元素（因为0的个数变多，所以会有不少元素“溢出”arr，j记录的就是这些溢出的元素）。但是要注意，如果i指向的元素不为0，那j就无需移动。j最终指向的是新arr的最后一个元素。
 
@@ -639,13 +639,13 @@ void duplicateZeros(vector<int>& arr) {
     }
 ```
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802022416505.png" alt="image-20250802022416505" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022416505.png" alt="image-20250802022416505" style="zoom:33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802022432081.png" alt="image-20250802022432081" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022432081.png" alt="image-20250802022432081" style="zoom:33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802022501097.png" alt="image-20250802022501097" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022501097.png" alt="image-20250802022501097" style="zoom:33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802023033767.png" alt="image-20250802023033767" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802023033767.png" alt="image-20250802023033767" style="zoom:33%;" />
 
 特判：考虑一个情况：数组的最后一个能“放下”的位置刚好是一个 0，但数组长度只够放下它的一次，**无法容纳重复的 0**。此时如果不做特殊处理，在主循环中会将这个 0 当作需要“双倍复制”，导致下标越界或错位。
 
@@ -660,7 +660,7 @@ void duplicateZeros(vector<int>& arr) {
 
 [75. 颜色分类](https://leetcode.cn/problems/sort-colors/)：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250802163426550.png" alt="image-20250802163426550" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802163426550.png" alt="image-20250802163426550" style="zoom: 50%;" />
 
 **方法一：三指针**
 
@@ -782,7 +782,7 @@ void duplicateZeros(vector<int>& arr) {
 
 ​	这里很精妙：如果i表示行号的话，由于每一行的元素都是[i, 2i, 3i, 4i, ... , ni]，所以一行中小于等于x的数是：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250804220524679.png" alt="image-20250804220524679" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250804220524679.png" alt="image-20250804220524679" style="zoom:50%;" />
 
 ​	i在这里可以看作是基数，由于行号增加，基数也增加，x/i并向下取整其实求的就是列的数，即有多少个 j 满足：i×j≤x （其中 1≤j≤n），把 j 除到右边就得到了上式。
 
@@ -818,7 +818,7 @@ void duplicateZeros(vector<int>& arr) {
 
 [1504. 统计全 1 子矩形](https://leetcode.cn/problems/count-submatrices-with-all-ones/)：过了，这题真的很有意思。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250805153500383.png" alt="image-20250805153500383" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250805153500383.png" alt="image-20250805153500383" style="zoom:50%;" />
 
 ​	用 单调栈 计算小于 heights[j] 的左边最近柱子的位置 left，把子矩形分成两类：
 
@@ -838,13 +838,13 @@ void duplicateZeros(vector<int>& arr) {
 
 [321. 拼接最大数](https://leetcode.cn/problems/create-maximum-number/)：两个数组是枚举，如果左边数组取1个数，右边就要取k - 1个数。然后单独求 ：取每个数组里面的k1个数能让子序列字典序最大这个是比较简单的，用单调栈即可。之后把两个结果进行合并。
 
-![](D:\TyporaFiles\Images\Leetcode刷题\dcae5d6f7feb6e8adb14ad15292f052771d6dfdf1e682d6e657f69b6a404479e.jpg)
+![](images\LeetcodeLearningNotes\dcae5d6f7feb6e8adb14ad15292f052771d6dfdf1e682d6e657f69b6a404479e.jpg)
 
 合并可以用双指针，依次比较两个指针指向的元素，把更大的元素放入数组，并移动这个指针，保持另一个指针不变，直到两个指针都走到尽头。
 
 **==需要注意的是双指针指向的两个数相等的情况：==**
 
-![image-20250806005025632](D:\TyporaFiles\Images\Leetcode刷题\image-20250806005025632.png)
+![image-20250806005025632](images\LeetcodeLearningNotes\image-20250806005025632.png)
 
 ​	需要比较后面的元素，直到某一边大于另一边。比如这种情况如果选右边的5，就变成了5564，选左边就是5654.
 
@@ -885,13 +885,13 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 ## 一、入门DP
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250806015123451.png" alt="image-20250806015123451" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250806015123451.png" alt="image-20250806015123451" style="zoom: 33%;" />
 
 ​	记忆化搜索 = 递归搜索 + 保存计算结果
 
 ​	时间复杂度计算公式：状态个数 x 单个状态所需要的时间
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250806015958319.png" alt="image-20250806015958319" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250806015958319.png" alt="image-20250806015958319" style="zoom:33%;" />
 
 > 递归和循环都是对每个i做计算。
 
@@ -926,9 +926,9 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 [2321. 拼接数组的最大分数](https://leetcode.cn/problems/maximum-score-of-spliced-array/):
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250807011616786.png" alt="image-20250807011616786" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807011616786.png" alt="image-20250807011616786" style="zoom: 50%;" />
 
-![image-20250807011551022](D:\TyporaFiles\Images\Leetcode刷题\image-20250807011551022.png)
+![image-20250807011551022](images\LeetcodeLearningNotes\image-20250807011551022.png)
 
 
 
@@ -952,13 +952,13 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 ​	每个物品只能选一次。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250807151535488.png" alt="image-20250807151535488" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807151535488.png" alt="image-20250807151535488" style="zoom: 33%;" />
 
 
 
 [494. 目标和](https://leetcode.cn/problems/target-sum/)：典型题
 
-![image-20250807160023989](D:\TyporaFiles\Images\Leetcode刷题\image-20250807160023989.png)
+![image-20250807160023989](images\LeetcodeLearningNotes\image-20250807160023989.png)
 
 ​	这里是巧妙之处在于，由于nums全是非负的，所以设符合要求的某个方法种，非负数的和是p，nums元素总和是s。那么负数的绝对值一定是s-p。所以：
 
@@ -989,11 +989,11 @@ def dfs(i,c):
 
 ​	给你一个长度为 `n` 的整数数组 `nums` 和一个 **正** 整数 `k` 。一个整数数组的 **能量** 定义为和 **等于** `k` 的子序列的数目。请你返回 `nums` 中所有子序列的 **能量和** 。由于答案可能很大，请你将它对 `109 + 7` **取余** 后返回。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250807173813477.png" alt="image-20250807173813477" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807173813477.png" alt="image-20250807173813477" style="zoom:33%;" />
 
-![image-20250807185113448](D:\TyporaFiles\Images\Leetcode刷题\image-20250807185113448.png)
+![image-20250807185113448](images\LeetcodeLearningNotes\image-20250807185113448.png)
 
-![image-20250807183010571](D:\TyporaFiles\Images\Leetcode刷题\image-20250807183010571.png)
+![image-20250807183010571](images\LeetcodeLearningNotes\image-20250807183010571.png)
 
 **为什么要用二维0-1背包**？
 
@@ -1033,7 +1033,7 @@ int sumOfPower(vector<int> &nums, int k) {
 
 **优化掉i这个维度，为什么不可以正序遍历j和c？**
 
- 	注意三维的状态转移方程：<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250807184238639.png" alt="image-20250807184238639" style="zoom:40%;" />，这里面我们想要取得i+1时的值，依托的是i时的值。如果正序遍历，即
+ 	注意三维的状态转移方程：<img src="images\LeetcodeLearningNotes\image-20250807184238639.png" alt="image-20250807184238639" style="zoom:40%;" />，这里面我们想要取得i+1时的值，依托的是i时的值。如果正序遍历，即
 
 ```c++
 for (int j = nums[i]; j <= k; j++) {
@@ -1074,7 +1074,7 @@ for (int j = nums[i]; j <= k; j++) {
 
 n个物品变成了n种物品
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250807155438607.png" alt="image-20250807155438607" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807155438607.png" alt="image-20250807155438607" style="zoom:33%;" />
 
 >  问：关于完全背包，有两种写法，一种是外层循环枚举物品，内层循环枚举体积；另一种是外层循环枚举体积，内层循环枚举物品。如何评价这两种写法的优劣？
 >
@@ -1116,19 +1116,19 @@ dfs(3, 10) → dfs(3, 8) → dfs(3, 6) → ...
 
 ### 1.最长公共子序列(LCS)
 
-![image-20250808213137895](D:\TyporaFiles\Images\Leetcode刷题\image-20250808213137895.png)
+![image-20250808213137895](images\LeetcodeLearningNotes\image-20250808213137895.png)
 
 简化：在si和tj都选时，只需要选i-1，j-1即可。在si或tj不选时，无需考虑i-1，j-1
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808214713032.png" alt="image-20250808214713032" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808214713032.png" alt="image-20250808214713032" style="zoom:50%;" />
 
 递推：
 
-![image-20250808215115702](D:\TyporaFiles\Images\Leetcode刷题\image-20250808215115702.png)
+![image-20250808215115702](images\LeetcodeLearningNotes\image-20250808215115702.png)
 
 ​	可以看到fij其实只需要知道它的左边、上面、左上，这三个相邻位置的状态。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808215539942.png" alt="image-20250808215539942" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808215539942.png" alt="image-20250808215539942" style="zoom:50%;" />
 
 ​	写一个临时变量存储一下即可解决。
 
@@ -1144,7 +1144,7 @@ dfs(3, 10) → dfs(3, 8) → dfs(3, 6) → ...
 
 ​	目标是：最少需要多少步操作。
 
-![image-20250808222837026](D:\TyporaFiles\Images\Leetcode刷题\image-20250808222837026.png)
+![image-20250808222837026](images\LeetcodeLearningNotes\image-20250808222837026.png)
 
 状态定义：
 
@@ -1160,7 +1160,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 注意边界条件：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808223201451.png" alt="image-20250808223201451" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808223201451.png" alt="image-20250808223201451" style="zoom:50%;" />
 
 > 这里的i和j都代表下标，表示 s[0...i]和 t[0...j]。注意不是前i个！
 
@@ -1168,29 +1168,29 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 子集型回溯：得出两种方式
 
-![](D:\TyporaFiles\Images\Leetcode刷题\image-20250808224935742-1754664576502-3.png)
+![](images\LeetcodeLearningNotes\image-20250808224935742-1754664576502-3.png)
 
 如果按照思路1，选了3之后，要记下来下标是j，然后移动i，判断i和j指向的数的大小关系；如果按照思路2，选了3之后，只要判断是否比3小，如果比3小那就更改j，指向这个比3小的。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808225422545.png" alt="image-20250808225422545" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808225422545.png" alt="image-20250808225422545" style="zoom:33%;" />
 
-![image-20250808225439066](D:\TyporaFiles\Images\Leetcode刷题\image-20250808225439066.png)
+![image-20250808225439066](images\LeetcodeLearningNotes\image-20250808225439066.png)
 
 ​	由于选作nums[i]成为末尾最后一个，所以求出来j的最大值还要加上1.
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808230106332.png" alt="image-20250808230106332" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230106332.png" alt="image-20250808230106332" style="zoom: 50%;" />
 
 ​	以上是回溯的解法，下面用dp来优化。
 
-递推表达式如下：<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808230243330.png" alt="image-20250808230243330" style="zoom: 33%;" />
+递推表达式如下：<img src="images\LeetcodeLearningNotes\image-20250808230243330.png" alt="image-20250808230243330" style="zoom: 33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808230509626.png" alt="image-20250808230509626" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230509626.png" alt="image-20250808230509626" style="zoom:50%;" />
 
 **思路三：**
 
 ​	由于把一个数组排序去重后，一定是一个严格递增的。因此可以把所给数组排序去重，然后和原先的它本身放在一起求LCS最长公共子序列即是答案。这也是LCS和LIS之间的联系。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250808230745594.png" alt="image-20250808230745594" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230745594.png" alt="image-20250808230745594" style="zoom:40%;" />
 
 ## 五、划分型DP
 
@@ -1227,7 +1227,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 ​	因为j是倒序，所以i要正序。当i等于0时，dfs(0)等于0
 
-![image-20250809003149144](D:\TyporaFiles\Images\Leetcode刷题\image-20250809003149144.png)
+![image-20250809003149144](images\LeetcodeLearningNotes\image-20250809003149144.png)
 
 [2369. 检查数组是否存在有效划分](https://leetcode.cn/problems/check-if-there-is-a-valid-partition-for-the-array/)：过了
 
@@ -1255,13 +1255,13 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 ​	在某一天卖出股票收益是正，啥也不做是0，买入是负
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250809195207779.png" alt="image-20250809195207779" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809195207779.png" alt="image-20250809195207779" style="zoom: 50%;" />
 
 请注意这个等价关系：<u>**第i-1天的结束就是第i天的开始**</u>
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250809205904577.png" alt="image-20250809205904577" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809205904577.png" alt="image-20250809205904577" style="zoom:33%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250809210339877.png" alt="image-20250809210339877" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809210339877.png" alt="image-20250809210339877" style="zoom:33%;" />
 
 #### 最多交易k次
 
@@ -1269,7 +1269,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 在状态转移时，买入和卖出选择其中一个是j-1，另一个是j，因为买卖才算交易一次。
 
-![image-20250809215636723](D:\TyporaFiles\Images\Leetcode刷题\image-20250809215636723.png)
+![image-20250809215636723](images\LeetcodeLearningNotes\image-20250809215636723.png)
 
 ​	要注意在递推时，j的值最大不是k，而是k+1.原因是：
 
@@ -1303,13 +1303,13 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 ​	这里的右指的是下标偏右边的，并不是大小什么的。
 
-![image-20250820004752964](D:\TyporaFiles\Images\Leetcode刷题\image-20250820004752964.png)
+![image-20250820004752964](images\LeetcodeLearningNotes\image-20250820004752964.png)
 
-![image-20250820004820033](D:\TyporaFiles\Images\Leetcode刷题\image-20250820004820033.png)
+![image-20250820004820033](images\LeetcodeLearningNotes\image-20250820004820033.png)
 
 ### 0.2 枚举中间
 
-![image-20250820004907686](D:\TyporaFiles\Images\Leetcode刷题\image-20250820004907686.png)
+![image-20250820004907686](images\LeetcodeLearningNotes\image-20250820004907686.png)
 
 ## 一、前缀和
 
@@ -1319,7 +1319,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 [560. 和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/)：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250820012303722.png" alt="image-20250820012303722" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250820012303722.png" alt="image-20250820012303722" style="zoom:33%;" />
 
 求出前缀和之后，再对前缀和使用一次枚举右维护左，从而算出答案。
 
@@ -1327,7 +1327,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 [2602. 使数组元素全部相等的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-make-all-array-elements-equal/)： 
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250821003005423.png" alt="image-20250821003005423" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250821003005423.png" alt="image-20250821003005423" style="zoom: 33%;" />
 
 ### 1.4 前缀异或和
 
@@ -1345,13 +1345,13 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 ### 2.1 一维差分（扫描线）
 
-![image-20250821163642347](D:\TyporaFiles\Images\Leetcode刷题\image-20250821163642347.png)
+![image-20250821163642347](images\LeetcodeLearningNotes\image-20250821163642347.png)
 
 [1094. 拼车](https://leetcode.cn/problems/car-pooling/)：
 
-![image-20250821164253843](D:\TyporaFiles\Images\Leetcode刷题\image-20250821164253843.png)
+![image-20250821164253843](images\LeetcodeLearningNotes\image-20250821164253843.png)
 
-![image-20250821164307349](D:\TyporaFiles\Images\Leetcode刷题\image-20250821164307349.png)
+![image-20250821164307349](images\LeetcodeLearningNotes\image-20250821164307349.png)
 
 [1589. 所有排列中的最大和](https://leetcode.cn/problems/maximum-sum-obtained-of-any-permutation/)：秒了
 
@@ -1359,11 +1359,11 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 [2132. 用邮票贴满网格图](https://leetcode.cn/problems/stamping-the-grid/)：难度2364
 
-![image-20250821183222685](D:\TyporaFiles\Images\Leetcode刷题\image-20250821183222685.png)
+![image-20250821183222685](images\LeetcodeLearningNotes\image-20250821183222685.png)
 
 先求二维前缀和，如果某个矩阵的和为0，代表能放邮票。本来要给每个格子设置一个cnt，然后++，但用二维差分替代，之后算出来每个小格子上有多少张邮票，如果某个格子上面0张，直接返回flase。
 
-![image-20250821183610534](D:\TyporaFiles\Images\Leetcode刷题\image-20250821183610534.png)
+![image-20250821183610534](images\LeetcodeLearningNotes\image-20250821183610534.png)
 
 ## 三、栈
 
@@ -1386,7 +1386,7 @@ make_heap(gifts.begin(), gifts.end()); // 原地堆化（最大堆）
 // gifts是一个vector<int>
 ```
 
-![image-20250822220543102](D:\TyporaFiles\Images\Leetcode刷题\image-20250822220543102.png)
+![image-20250822220543102](images\LeetcodeLearningNotes\image-20250822220543102.png)
 
 **原地堆化的原理：**
 
@@ -1396,9 +1396,9 @@ make_heap(gifts.begin(), gifts.end()); // 原地堆化（最大堆）
 
 **下沉：**
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250822221956632.png" alt="image-20250822221956632" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822221956632.png" alt="image-20250822221956632" style="zoom:50%;" />
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250822222037994.png" alt="image-20250822222037994" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822222037994.png" alt="image-20250822222037994" style="zoom:50%;" />
 
 ​	因为如果发生了交换，则原本的根节点被换到下面去了，它是小于子节点的，它来到原先子节点的位置，那有可能不满足比左右子孩子都大的条件，所以还需继续下沉；原先的另一个子孩子由于没有发生交换，又因为是倒序处理，所以它已经是满足条件的，不用动。
 
@@ -1444,8 +1444,8 @@ struct Node {
 
 ​	初始化，把father填充成{0，1，2，3，4，...}，即每个元素一开始的父节点是自己。sz每个元素都是1。cc的值为n，每个元素都是一个连通块。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250827153606784.png" alt="image-20250827153606784" style="zoom: 33%;" />
-![image-20250827153632704](D:\TyporaFiles\Images\Leetcode刷题\image-20250827153632704.png)
+<img src="images\LeetcodeLearningNotes\image-20250827153606784.png" alt="image-20250827153606784" style="zoom: 33%;" />
+![image-20250827153632704](images\LeetcodeLearningNotes\image-20250827153632704.png)
 
 ### 7.1 基础
 
@@ -1465,7 +1465,7 @@ struct Node {
 
 [2334. 元素值大于变化阈值的子数组](https://leetcode.cn/problems/subarray-with-elements-greater-than-varying-threshold/)：
 
-![image-20250828002709669](D:\TyporaFiles\Images\Leetcode刷题\image-20250828002709669.png)
+![image-20250828002709669](images\LeetcodeLearningNotes\image-20250828002709669.png)
 
 ​	并查集解法本质是统计“**以某个nums[i]为最小值的最大连续子数组的长度**”，所以要把它左边和右边比它大的元素都包含进来。最后还是看不懂
 
@@ -1554,13 +1554,13 @@ search中，
 
 ### 具体过程
 
-![image-20250824221657567](D:\TyporaFiles\Images\Leetcode刷题\image-20250824221657567.png)
+![image-20250824221657567](images\LeetcodeLearningNotes\image-20250824221657567.png)
 
 ​	所以g[i]表示以i为起始点，堆中放的是终点和最短路径。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250824221941985.png" alt="image-20250824221941985" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250824221941985.png" alt="image-20250824221941985" style="zoom:33%;" />
 
-![image-20250824222253111](D:\TyporaFiles\Images\Leetcode刷题\image-20250824222253111.png)
+![image-20250824222253111](images\LeetcodeLearningNotes\image-20250824222253111.png)
 
 优先队列中，放的是一堆pair，first代表起点到x的最短路径，second代表x
 
@@ -1568,7 +1568,7 @@ search中，
 
 从现在开始记住一点，我们的最终目标是取更新dis这个数组！也就是尽量去更新dis[i]的值。
 
-![image-20250824223518466](D:\TyporaFiles\Images\Leetcode刷题\image-20250824223518466.png)
+![image-20250824223518466](images\LeetcodeLearningNotes\image-20250824223518466.png)
 
 ### **为什么dis_x > dis[x]代表之前出堆过?为什么出堆过就不用再维护dis[x]了？**
 
@@ -1616,13 +1616,13 @@ search中，
 
 最终排序的结果是：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\1738131168-tWFNGZ-006-toposort.png" alt="图论题单 图论算法 图论题目 LeetCode 力扣图论 灵茶山艾府" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\1738131168-tWFNGZ-006-toposort.png" alt="图论题单 图论算法 图论题目 LeetCode 力扣图论 灵茶山艾府" style="zoom:33%;" />
 
 每条边都是：
 
 ​	从排在前面的点，指向排在后面的点。即对于任意有向边 *x*→*y*，*x* 一定在 *y* 之前。
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250825173432627.png" alt="image-20250825173432627" style="zoom:50%;" /><img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250825173455806.png" alt="image-20250825173455806" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250825173432627.png" alt="image-20250825173432627" style="zoom:50%;" /><img src="images\LeetcodeLearningNotes\image-20250825173455806.png" alt="image-20250825173455806" style="zoom:50%;" />
 
 ### 2.1 拓扑排序
 
@@ -1636,13 +1636,13 @@ search中，
 
 ​	分为两种情况，第一种是基环大于2：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\1641096462-IsWZUX-1.png" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\1641096462-IsWZUX-1.png" style="zoom: 50%;" />
 
 ​	这种情况直接就是取环的大小。哪怕链再长也没用，比如2后面还有5，6，7，8，这样8到7到6到5到2到1，看着长度是5，但1喜欢的0不在其中，1是不会来参加会议的。
 
 ​	第二种是基环等于2，也就是只有两个节点：
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\1641096473-JtGBgY-3.png" alt="3.png" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\1641096473-JtGBgY-3.png" alt="3.png" style="zoom:50%;" />
 
 ​	假设0和1先坐下，0在左1在右，0在左边还可以接着坐2，4，5，也就是找0反图最长的链，同理1也是这样操作，找到的是6。其实5和6不用有什么关系
 
@@ -1650,11 +1650,11 @@ search中，
 
 ​	综上，问题演化为找给定的图中的基环树（两种不同情况的）。
 
-![image-20250825234930557](D:\TyporaFiles\Images\Leetcode刷题\image-20250825234930557.png)
+![image-20250825234930557](images\LeetcodeLearningNotes\image-20250825234930557.png)
 
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250826000408422.png" alt="image-20250826000408422" style="zoom:50%;" />
-<img src="D:\TyporaFiles\Images\Leetcode刷题\image-20250826000547134.png" alt="image-20250826000547134" style="zoom:50%;" />
-![image-20250826000511433](D:\TyporaFiles\Images\Leetcode刷题\image-20250826000511433.png)
+<img src="images\LeetcodeLearningNotes\image-20250826000408422.png" alt="image-20250826000408422" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250826000547134.png" alt="image-20250826000547134" style="zoom:50%;" />
+![image-20250826000511433](images\LeetcodeLearningNotes\image-20250826000511433.png)
 
 [2127. 参加会议的最多员工数](https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/)：太难了
 
