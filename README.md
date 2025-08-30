@@ -1,7 +1,3 @@
-[TOC]
-
----
-
 # 杂烩
 
 1.二分查找，`mid = left + (right - left)`，然后每次`left = mid + 1`，`right = mid - 1`.注意不要等于`mid`.
