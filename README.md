@@ -1,4 +1,8 @@
-# 整理的细节
+[TOC]
+
+---
+
+# 杂烩
 
 1.二分查找，`mid = left + (right - left)`，然后每次`left = mid + 1`，`right = mid - 1`.注意不要等于`mid`.
 
@@ -76,7 +80,7 @@ v.assign(100, -1);  // 变成长度为 100，全部是 -1
 
 19.向上取整公式：
 
-<img src="images\LeetcodeLearningNotes\image-20250803191411847.png" alt="image-20250803191411847" style="zoom: 40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250803191411847.png" alt="image-20250803191411847" width="40%;" />
 
 20.二维数组创建：
 
@@ -159,13 +163,13 @@ int result = std::max({a, b, c});  // ✅ C++11 起支持的写法
 
 29.创建堆：
 
-<img src="images\LeetcodeLearningNotes\image-20250822235911302.png" alt="image-20250822235911302" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822235911302.png" alt="image-20250822235911302" width="33%;" />
 
-多个元素可以用pair：
+​	多个元素可以用pair：
 
-<img src="images\LeetcodeLearningNotes\image-20250822235938794.png" alt="image-20250822235938794" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822235938794.png" alt="image-20250822235938794" width="50%;" />
 
-greater会自动比较字典序，第一个相等会自动比第二个，哪个小哪个排前面。
+​	greater会自动比较字典序，第一个相等会自动比第二个，哪个小哪个排前面。
 
 30.无向图判断环的一个直观性质：如果点a四周有两个及以上的点a被遍历过,则必有环。
 
@@ -179,7 +183,9 @@ iota(ids, ids + n, 0);
 sort(ids, ids + n, [&](int i, int j) { return nums[i] > nums[j]; });
 ```
 
+33.二分stl函数lambda比较器返回值：
 
+<img src="images\LeetcodeLearningNotes\image-20250828165555091.png" alt="image-20250828165555091" width="50%;" />
 
 # 大整数乘法问题
 
@@ -208,7 +214,7 @@ a x b得到：
 
 经验：
 
-<img src="images\LeetcodeLearningNotes\image-20250726170426104.png" alt="image-20250726170426104" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250726170426104.png" alt="image-20250726170426104" width="50%;" />
 
 在写大数乘时，犯了个错误，这里单独看 `a[i] * b[j]` 是否超过 10 就提前进位了，其实是不对的。正确做法是：**先全部乘完加到 `res[i + j]` 上，再统一进位处理**。
 
@@ -246,7 +252,7 @@ $$
 
 ​	在快速幂中，指数被看作二进制。
 
-​	算法执行中，bash持有的值 = <u>当前对应的 <img src="images\LeetcodeLearningNotes\image-20250726174603660.png" alt="image-20250726174603660" style="zoom: 50%;" /></u>，其中 i 是当前处理的二进制位编号（从低位开始数）。
+​	算法执行中，bash持有的值 = <u>当前对应的 <img src="images\LeetcodeLearningNotes\image-20250726174603660.png" alt="image-20250726174603660" width="50%;" /></u>，其中 i 是当前处理的二进制位编号（从低位开始数）。
 
 | 二进制位数 i | 当前 base 的值             |
 | ------------ | -------------------------- |
@@ -290,23 +296,51 @@ int power(int a, int n) {
 
 # 质因数
 
-**定义**
+## **定义**
 
 ​	质因数是一个整数的质数因子，即能整除这个数的质数。
 
-**质因数分解**
+## **质因数分解**
 
 ​	每个整数都可以分解成若干质因数的乘积。
 
-**与最大公约数的关系**
+## **与最大公约数的关系**
 
 ​	如果两个数的最大公约数>1	`=`	它们至少有一个公共质因数 
 
-**如何求**
+## **如何求**
 
-暴力试除法，10的6到7次方以下量级的数据适用，思路：
+**暴力试除法**，10的6到7次方以下量级的数据适用，思路：
 
 ​	挑选除数，从2开始，一直遍历到根号n。如果n能整除i，这个i就是质因数（因为i是从2开始遍历的，不可能存在i不是质数也能被n整除的情况），把n更新成n/i.如果需要所有的质因数，每次除以i都放进ans数组中，如果不想要重复的，每次n能整除i就写一个while，让n一直除以i，直到除不尽为止。最后待到i遍历到根号n时，如果n这时还大于1，就把n加进ans，因为剩下的n肯定是个质数。最终的ans数组就是n所有的质因数。
+
+# 最大公约数
+
+​	求两个数a和b的GCD怎么求？
+
+## 法一：公共质因数法
+
+​	需要知道a和b的质因数以及每个质因数出现的次数。
+
+​	只取a和b中都有的质因数i，比较i在a和b中出现的个数，取最小的作为i的次数。比如i在a中有3个，在b中有2个，那么取i的2次方。把所有符合条件的i相乘即是a和b 的gcd。
+
+```
+a = 60 = 2^2 × 3^1 × 5^1
+b = 90 = 2^1 × 3^2 × 5^1
+所以gcd = 2^1 x 3^1 x 5^1 = 30
+```
+
+## 法二：欧几里得算法
+
+**原理：**
+
+<img src="images\LeetcodeLearningNotes\image-20250829160454725.png" alt="image-20250829160454725" width="40%;" />
+
+```c++
+int gcd(int a, int b) {
+    return b == 0 ? a : gcd(b, a % b);
+}
+```
 
 # 质数
 
@@ -314,7 +348,7 @@ int power(int a, int n) {
 
 值得注意的是，标记合数时，循环中j是从`i*i`开始标记，为什么不是`2*i`？这是在保证**<u>每个合数只被最小的质数标记一次</u>**。
 
-<img src="images\LeetcodeLearningNotes\image-20250827172949160.png" alt="image-20250827172949160" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250827172949160.png" alt="image-20250827172949160" width="40%;" />
 
 # 递归是如何转为迭代的？
 
@@ -342,9 +376,177 @@ $$
 
 ​	于是bash诞生了。bash不仅可以计算拆出来的偶次幂里面a的幂数，还可以记录<u>拆奇次幂时多余的a的数量</u>。这些多余的a汇集到result，而bash全是2的倍数次幂，自然而然地成为了偶次幂的计算素材。
 
-# 二叉树
+# 八大排序
 
-![图片](images\LeetcodeLearningNotes\640.webp)
+## 零、内部排序与外部排序
+
+​	排序分为内部排序和外部排序。外部排序是指在内存中无法完成（数据量太大）的排序，需要频繁进行内存与外存的数据交换。因此算法重点在于**减少磁盘I/O的次数**。这里仅讨论内部排序。
+
+## 一、插入法
+
+### 1.直接插入排序
+
+时间复杂度：平均On2 ，最好情况是On，最坏On2
+
+> On2表示O(n^2)，下不再赘述。
+
+空间复杂度：O1
+
+稳定性：稳定
+
+思路：
+
+​	从左到右遍历数组，每次到某个元素后取这个元素再从头开始挨个比，找到该放的位置把它插入（后面的元素挨个往后挪一位），直到所有元素都处理完。
+
+> 找该插入的位置这一步可以优化，即**折半插入排序**，利用二分查找，找到需要插入的位置。虽然比较次数被优化到了Onlogn，但挪动次数还是On2。
+
+### 2.希尔（Shell）排序
+
+思路：
+
+​	直接（折半）插入排序有缺点，设想一个数组中最小的数在末尾，那等遍历到它时，它需要从最末尾一直挪到最开头。这是极端情况，但事实上，只要是偏小的值在数组的偏后面位置，都会面临这种情况。
+
+​	希尔排序选择先不着急一步到位把某个元素放到它最终要放的位置，而是<u>**先把相隔比较远的元素先大致排一下**</u>。具体逻辑是：设置一个gap变量作为间隔值，比如gap=5，代表5个元素为一组，组内做插入排序；然后缩小间隔，比如gap=3，3个一组再排一次，最后间隔缩小到1，此时变成正常的直接插入排序，但整个序列已经差不多有序，所以插入排序的速度很快。
+
+时间复杂度：
+
+**最坏情况**：仍可能是 `O(n²)`。
+
+**最好情况**：接近 `O(n log² n)`。
+
+**常用 gap（如 Knuth 增量）**：实际运行非常快，平均复杂度常被认为在 **O(n^1.3 ~ n^1.5)** 左右，比插入排序好很多。
+
+空间复杂度：O1.
+
+稳定性：不稳定。因为当 gap>1 时，**相等的元素可能会被分到不同的子序列（不同组）**。
+
+<img src="images\LeetcodeLearningNotes\image-20250830135638053.png" alt="image-20250830135638053" width="33%;" />
+
+## 二、选择法
+
+### 3.选择排序
+
+思路：遍历数组，每次循环都从当前位置开始向后遍历，找到最小值然后和当前位置的值进行交换。
+
+时间复杂度：显然On2
+
+空间复杂度：可以原地排序，所以是O1
+
+稳定性：不稳定。
+
+<img src="images\LeetcodeLearningNotes\image-20250830140259425.png" alt="image-20250830140259425" width="33%;" />
+
+
+
+### 4. 堆排序
+
+思路：先把数组原地建为大顶堆，这样顶部就是最大值，然后把最大值和尾部交换，移到最后面，这时把剩下的前n-1个元素重新调整成大顶堆，只要最后堆大小为1，排序完成。
+
+时间复杂度：要做n-1次下沉，每次下沉Ologn
+
+> 完全二叉树的高度 h ≈ log₂ n，再怎么下沉操作次数不会超过h
+
+空间复杂度：O1，可以原地排序
+
+稳定性：不稳定。频繁交换父节点和子节点
+
+## 三、交换法
+
+### 5.冒泡排序
+
+思路：两两相比，大的被交换到后面，这样最大的值会跑到末尾。一共需要n-1趟这样的操作，完成排序。
+
+时间复杂度：On2
+
+空间复杂度：O1，可以原地排序
+
+稳定性：稳定
+
+### 6.快速排序
+
+时间复杂度：Onlogn
+
+空间复杂度：主要来自递归栈Ologn
+
+稳定性：不稳定
+
+## 四、归并法
+
+### 7.归并排序
+
+思路：
+
+**拆分（Divide）**
+
+- 把数组从中间一分为二，拆成左右两个子数组
+- 对左右子数组继续递归拆分，直到每个子数组只有一个元素（天然有序）
+
+**合并（Conquer / Merge）**
+
+- 把两个有序子数组合并成一个有序数组
+- 直到最终合并成一个完整有序数组
+
+时间复杂度：Onlogn，每层递归都要合并两个子数组，合并过程要递归所有元素（On）一共有logn趟（递归深度）。
+
+> 无论最优、平均、最坏情况都是 O(n log n)
+
+空间复杂度：每次合并需要开一个大小为子数组长度的临时数组，如果用递归空间复杂度是On
+
+稳定性：稳定。合并时相等元素会按照原顺序先放入结果数组 
+
+```c++
+// 合并两个有序子数组 arr[left..mid] 和 arr[mid+1..right]
+void merge(vector<int>& arr, int left, int mid, int right) {
+    vector<int> temp; // 临时数组存放合并结果
+    int i = left;     // 左子数组指针
+    int j = mid + 1;  // 右子数组指针
+
+    // 1️⃣ 当左右都有剩余元素时，比较大小，将较小元素加入 temp
+    while (i <= mid && j <= right) {
+        if (arr[i] <= arr[j]) {
+            temp.push_back(arr[i]);
+            i++;
+        } else {
+            temp.push_back(arr[j]);
+            j++;
+        }
+    }
+
+    // 2️⃣ 如果左边还有剩余元素，直接加入 temp
+    while (i <= mid) {
+        temp.push_back(arr[i]);
+        i++;
+    }
+
+    // 3️⃣ 如果右边还有剩余元素，直接加入 temp
+    while (j <= right) {
+        temp.push_back(arr[j]);
+        j++;
+    }
+
+    // 4️⃣ 将 temp 的内容拷贝回原数组 arr
+    for (int k = 0; k < temp.size(); k++) {
+        arr[left + k] = temp[k];
+    }
+}
+
+// 归并排序递归函数
+void mergeSort(vector<int>& arr, int left, int right) {
+    // 递归终止条件：子数组长度 <= 1
+    if (left >= right) return;
+
+    int mid = left + (right - left) / 2; // 防止溢出
+    mergeSort(arr, left, mid);           // 排序左半部分
+    mergeSort(arr, mid + 1, right);      // 排序右半部分
+    merge(arr, left, mid, right);        // 合并有序子数组
+}
+```
+
+## 五、非比较法
+
+### 8.基数排序
+
+
 
 # 滑动窗口与双指针
 
@@ -374,11 +576,11 @@ $$
 
 进阶：
 
-[2779. 数组的最大美丽值](https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/)：<img src="images\LeetcodeLearningNotes\image-20250728165309623.png" alt="image-20250728165309623" style="zoom:25%;" />
+[2779. 数组的最大美丽值](https://leetcode.cn/problems/maximum-beauty-of-an-array-after-applying-operation/)：<img src="images\LeetcodeLearningNotes\image-20250728165309623.png" alt="image-20250728165309623" width="25%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250728170046261.png" alt="image-20250728170046261" style="zoom: 40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250728170046261.png" alt="image-20250728170046261" width="40%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250728170118884.png" alt="image-20250728170118884" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250728170118884.png" alt="image-20250728170118884" width="40%;" />
 
 神了：![image-20250728170022627](images\LeetcodeLearningNotes\image-20250728170022627.png)
 
@@ -450,9 +652,9 @@ public:
 
 自己非常艰难地过了：
 
-<img src="images\LeetcodeLearningNotes\image-20250730191211103.png" alt="image-20250730191211103" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250730191211103.png" alt="image-20250730191211103" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250730191225828.png" alt="image-20250730191225828" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250730191225828.png" alt="image-20250730191225828" width="50%;" />
 
 ​	我自己的算法，这个会导致超时。
 
@@ -510,13 +712,13 @@ public:
 
 [611. 有效三角形的个数](https://leetcode.cn/problems/valid-triangle-number/)：
 
-<img src="images\LeetcodeLearningNotes\image-20250731185620782.png" alt="image-20250731185620782" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731185620782.png" alt="image-20250731185620782" width="40%;" />
 
 把问题转化为：从 *nums* 中选三个数，满足 1≤*a*≤*b*≤*c* 且 *a*+*b*>*c* 的方案数。
 
 **枚举最长边+相向双指针**：
 
-<img src="images\LeetcodeLearningNotes\image-20250731190023564.png" alt="image-20250731190023564" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731190023564.png" alt="image-20250731190023564" width="50%;" />
 
 最外层的循环是c在移动，内层有两个相向双指针i和j，初始值是0和right - 1.
 
@@ -575,7 +777,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1574. 删除最短的子数组使剩余数组有序](https://leetcode.cn/problems/shortest-subarray-to-be-removed-to-make-array-sorted/)：最终114/119
 
-<img src="images\LeetcodeLearningNotes\image-20250731235453665.png" alt="image-20250731235453665" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250731235453665.png" alt="image-20250731235453665" width="50%;" />
 
 **写法一：枚举左端点，移动右端点**
 
@@ -591,7 +793,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1793. 好子数组的最大分数](https://leetcode.cn/problems/maximum-score-of-a-good-subarray/)：
 
-<img src="images\LeetcodeLearningNotes\image-20250801160304461.png" alt="image-20250801160304461" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250801160304461.png" alt="image-20250801160304461" width="50%;" />
 
 **方法一：单调栈**
 
@@ -618,7 +820,7 @@ for (int i = 0; i < n - 2; i++) {
 
 [1089. 复写零](https://leetcode.cn/problems/duplicate-zeros/):
 
-<img src="images\LeetcodeLearningNotes\image-20250802022019112.png" alt="image-20250802022019112" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022019112.png" alt="image-20250802022019112" width="50%;" />
 
 左边一个指针i，从下标0开始遍历arr，右边的指针j从n - 1开始遍历arr。j表示要从原arr中移除的元素（因为0的个数变多，所以会有不少元素“溢出”arr，j记录的就是这些溢出的元素）。但是要注意，如果i指向的元素不为0，那j就无需移动。j最终指向的是新arr的最后一个元素。
 
@@ -639,13 +841,13 @@ void duplicateZeros(vector<int>& arr) {
     }
 ```
 
-<img src="images\LeetcodeLearningNotes\image-20250802022416505.png" alt="image-20250802022416505" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022416505.png" alt="image-20250802022416505" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250802022432081.png" alt="image-20250802022432081" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022432081.png" alt="image-20250802022432081" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250802022501097.png" alt="image-20250802022501097" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802022501097.png" alt="image-20250802022501097" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250802023033767.png" alt="image-20250802023033767" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802023033767.png" alt="image-20250802023033767" width="33%;" />
 
 特判：考虑一个情况：数组的最后一个能“放下”的位置刚好是一个 0，但数组长度只够放下它的一次，**无法容纳重复的 0**。此时如果不做特殊处理，在主循环中会将这个 0 当作需要“双倍复制”，导致下标越界或错位。
 
@@ -660,7 +862,7 @@ void duplicateZeros(vector<int>& arr) {
 
 [75. 颜色分类](https://leetcode.cn/problems/sort-colors/)：
 
-<img src="images\LeetcodeLearningNotes\image-20250802163426550.png" alt="image-20250802163426550" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250802163426550.png" alt="image-20250802163426550" width="50%;" />
 
 **方法一：三指针**
 
@@ -782,7 +984,7 @@ void duplicateZeros(vector<int>& arr) {
 
 ​	这里很精妙：如果i表示行号的话，由于每一行的元素都是[i, 2i, 3i, 4i, ... , ni]，所以一行中小于等于x的数是：
 
-<img src="images\LeetcodeLearningNotes\image-20250804220524679.png" alt="image-20250804220524679" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250804220524679.png" alt="image-20250804220524679" width="50%;" />
 
 ​	i在这里可以看作是基数，由于行号增加，基数也增加，x/i并向下取整其实求的就是列的数，即有多少个 j 满足：i×j≤x （其中 1≤j≤n），把 j 除到右边就得到了上式。
 
@@ -818,7 +1020,7 @@ void duplicateZeros(vector<int>& arr) {
 
 [1504. 统计全 1 子矩形](https://leetcode.cn/problems/count-submatrices-with-all-ones/)：过了，这题真的很有意思。
 
-<img src="images\LeetcodeLearningNotes\image-20250805153500383.png" alt="image-20250805153500383" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250805153500383.png" alt="image-20250805153500383" width="50%;" />
 
 ​	用 单调栈 计算小于 heights[j] 的左边最近柱子的位置 left，把子矩形分成两类：
 
@@ -885,13 +1087,13 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 ## 一、入门DP
 
-<img src="images\LeetcodeLearningNotes\image-20250806015123451.png" alt="image-20250806015123451" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250806015123451.png" alt="image-20250806015123451" width="33%;" />
 
 ​	记忆化搜索 = 递归搜索 + 保存计算结果
 
 ​	时间复杂度计算公式：状态个数 x 单个状态所需要的时间
 
-<img src="images\LeetcodeLearningNotes\image-20250806015958319.png" alt="image-20250806015958319" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250806015958319.png" alt="image-20250806015958319" width="33%;" />
 
 > 递归和循环都是对每个i做计算。
 
@@ -926,7 +1128,7 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 [2321. 拼接数组的最大分数](https://leetcode.cn/problems/maximum-score-of-spliced-array/):
 
-<img src="images\LeetcodeLearningNotes\image-20250807011616786.png" alt="image-20250807011616786" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807011616786.png" alt="image-20250807011616786" width="50%;" />
 
 ![image-20250807011551022](images\LeetcodeLearningNotes\image-20250807011551022.png)
 
@@ -952,7 +1154,7 @@ int compare(vector<int>& subsequence1, int index1, vector<int>& subsequence2, in
 
 ​	每个物品只能选一次。
 
-<img src="images\LeetcodeLearningNotes\image-20250807151535488.png" alt="image-20250807151535488" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807151535488.png" alt="image-20250807151535488" width="33%;" />
 
 
 
@@ -989,7 +1191,7 @@ def dfs(i,c):
 
 ​	给你一个长度为 `n` 的整数数组 `nums` 和一个 **正** 整数 `k` 。一个整数数组的 **能量** 定义为和 **等于** `k` 的子序列的数目。请你返回 `nums` 中所有子序列的 **能量和** 。由于答案可能很大，请你将它对 `109 + 7` **取余** 后返回。
 
-<img src="images\LeetcodeLearningNotes\image-20250807173813477.png" alt="image-20250807173813477" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807173813477.png" alt="image-20250807173813477" width="33%;" />
 
 ![image-20250807185113448](images\LeetcodeLearningNotes\image-20250807185113448.png)
 
@@ -1033,7 +1235,7 @@ int sumOfPower(vector<int> &nums, int k) {
 
 **优化掉i这个维度，为什么不可以正序遍历j和c？**
 
- 	注意三维的状态转移方程：<img src="images\LeetcodeLearningNotes\image-20250807184238639.png" alt="image-20250807184238639" style="zoom:40%;" />，这里面我们想要取得i+1时的值，依托的是i时的值。如果正序遍历，即
+ 	注意三维的状态转移方程：<img src="images\LeetcodeLearningNotes\image-20250807184238639.png" alt="image-20250807184238639" width="40%;" />，这里面我们想要取得i+1时的值，依托的是i时的值。如果正序遍历，即
 
 ```c++
 for (int j = nums[i]; j <= k; j++) {
@@ -1074,7 +1276,7 @@ for (int j = nums[i]; j <= k; j++) {
 
 n个物品变成了n种物品
 
-<img src="images\LeetcodeLearningNotes\image-20250807155438607.png" alt="image-20250807155438607" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250807155438607.png" alt="image-20250807155438607" width="33%;" />
 
 >  问：关于完全背包，有两种写法，一种是外层循环枚举物品，内层循环枚举体积；另一种是外层循环枚举体积，内层循环枚举物品。如何评价这两种写法的优劣？
 >
@@ -1120,7 +1322,7 @@ dfs(3, 10) → dfs(3, 8) → dfs(3, 6) → ...
 
 简化：在si和tj都选时，只需要选i-1，j-1即可。在si或tj不选时，无需考虑i-1，j-1
 
-<img src="images\LeetcodeLearningNotes\image-20250808214713032.png" alt="image-20250808214713032" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808214713032.png" alt="image-20250808214713032" width="50%;" />
 
 递推：
 
@@ -1128,7 +1330,7 @@ dfs(3, 10) → dfs(3, 8) → dfs(3, 6) → ...
 
 ​	可以看到fij其实只需要知道它的左边、上面、左上，这三个相邻位置的状态。
 
-<img src="images\LeetcodeLearningNotes\image-20250808215539942.png" alt="image-20250808215539942" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808215539942.png" alt="image-20250808215539942" width="50%;" />
 
 ​	写一个临时变量存储一下即可解决。
 
@@ -1160,7 +1362,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 注意边界条件：
 
-<img src="images\LeetcodeLearningNotes\image-20250808223201451.png" alt="image-20250808223201451" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808223201451.png" alt="image-20250808223201451" width="50%;" />
 
 > 这里的i和j都代表下标，表示 s[0...i]和 t[0...j]。注意不是前i个！
 
@@ -1172,25 +1374,25 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 如果按照思路1，选了3之后，要记下来下标是j，然后移动i，判断i和j指向的数的大小关系；如果按照思路2，选了3之后，只要判断是否比3小，如果比3小那就更改j，指向这个比3小的。
 
-<img src="images\LeetcodeLearningNotes\image-20250808225422545.png" alt="image-20250808225422545" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808225422545.png" alt="image-20250808225422545" width="33%;" />
 
 ![image-20250808225439066](images\LeetcodeLearningNotes\image-20250808225439066.png)
 
 ​	由于选作nums[i]成为末尾最后一个，所以求出来j的最大值还要加上1.
 
-<img src="images\LeetcodeLearningNotes\image-20250808230106332.png" alt="image-20250808230106332" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230106332.png" alt="image-20250808230106332" width="50%;" />
 
 ​	以上是回溯的解法，下面用dp来优化。
 
-递推表达式如下：<img src="images\LeetcodeLearningNotes\image-20250808230243330.png" alt="image-20250808230243330" style="zoom: 33%;" />
+递推表达式如下：<img src="images\LeetcodeLearningNotes\image-20250808230243330.png" alt="image-20250808230243330" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250808230509626.png" alt="image-20250808230509626" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230509626.png" alt="image-20250808230509626" width="50%;" />
 
 **思路三：**
 
 ​	由于把一个数组排序去重后，一定是一个严格递增的。因此可以把所给数组排序去重，然后和原先的它本身放在一起求LCS最长公共子序列即是答案。这也是LCS和LIS之间的联系。
 
-<img src="images\LeetcodeLearningNotes\image-20250808230745594.png" alt="image-20250808230745594" style="zoom:40%;" />
+<img src="images\LeetcodeLearningNotes\image-20250808230745594.png" alt="image-20250808230745594" width="40%;" />
 
 ## 五、划分型DP
 
@@ -1255,13 +1457,13 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 ​	在某一天卖出股票收益是正，啥也不做是0，买入是负
 
-<img src="images\LeetcodeLearningNotes\image-20250809195207779.png" alt="image-20250809195207779" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809195207779.png" alt="image-20250809195207779" width="50%;" />
 
 请注意这个等价关系：<u>**第i-1天的结束就是第i天的开始**</u>
 
-<img src="images\LeetcodeLearningNotes\image-20250809205904577.png" alt="image-20250809205904577" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809205904577.png" alt="image-20250809205904577" width="33%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250809210339877.png" alt="image-20250809210339877" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250809210339877.png" alt="image-20250809210339877" width="33%;" />
 
 #### 最多交易k次
 
@@ -1319,7 +1521,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 [560. 和为 K 的子数组](https://leetcode.cn/problems/subarray-sum-equals-k/)：
 
-<img src="images\LeetcodeLearningNotes\image-20250820012303722.png" alt="image-20250820012303722" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250820012303722.png" alt="image-20250820012303722" width="33%;" />
 
 求出前缀和之后，再对前缀和使用一次枚举右维护左，从而算出答案。
 
@@ -1327,7 +1529,7 @@ dfs(i, j) = 把 s[0..i] 转换成 t[0..j] 的最小操作数
 
 [2602. 使数组元素全部相等的最少操作次数](https://leetcode.cn/problems/minimum-operations-to-make-all-array-elements-equal/)： 
 
-<img src="images\LeetcodeLearningNotes\image-20250821003005423.png" alt="image-20250821003005423" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250821003005423.png" alt="image-20250821003005423" width="33%;" />
 
 ### 1.4 前缀异或和
 
@@ -1396,9 +1598,9 @@ make_heap(gifts.begin(), gifts.end()); // 原地堆化（最大堆）
 
 **下沉：**
 
-<img src="images\LeetcodeLearningNotes\image-20250822221956632.png" alt="image-20250822221956632" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822221956632.png" alt="image-20250822221956632" width="50%;" />
 
-<img src="images\LeetcodeLearningNotes\image-20250822222037994.png" alt="image-20250822222037994" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250822222037994.png" alt="image-20250822222037994" width="50%;" />
 
 ​	因为如果发生了交换，则原本的根节点被换到下面去了，它是小于子节点的，它来到原先子节点的位置，那有可能不满足比左右子孩子都大的条件，所以还需继续下沉；原先的另一个子孩子由于没有发生交换，又因为是倒序处理，所以它已经是满足条件的，不用动。
 
@@ -1444,7 +1646,7 @@ struct Node {
 
 ​	初始化，把father填充成{0，1，2，3，4，...}，即每个元素一开始的父节点是自己。sz每个元素都是1。cc的值为n，每个元素都是一个连通块。
 
-<img src="images\LeetcodeLearningNotes\image-20250827153606784.png" alt="image-20250827153606784" style="zoom: 33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250827153606784.png" alt="image-20250827153606784" width="33%;" />
 ![image-20250827153632704](images\LeetcodeLearningNotes\image-20250827153632704.png)
 
 ### 7.1 基础
@@ -1476,6 +1678,28 @@ struct Node {
 [3244. 新增道路查询后的最短距离 II](https://leetcode.cn/problems/shortest-distance-after-road-addition-queries-ii/)：这里“合并”不能从点的层面思考，而是要从边的层面。比如2，4就相当于把2到3和3到4这两条边合并了。
 
 ​	在合并上学到了新的细节，每次找x所在的这个集合的最右边节点（其实就是find(x)的结果），然后把包含x的这个集合和它右边邻近的集合合在一起，以此类推。
+
+[1851. 包含每个查询的最小区间](https://leetcode.cn/problems/minimum-interval-to-include-each-query/)：
+
+<img src="images\LeetcodeLearningNotes\image-20250828163658395.png" alt="image-20250828163658395" width="40%;" />
+
+**思路**
+
+​	按区间长度从小到大对intervals进行排序，并遍历intervals数组，在每次遍历时判断查询数组中的元素有哪些是在这个区间中的，然后把它们的答案设为当前的区间长度。
+
+​	显然，区间是从小到大排序，如果某个查询数组元素还没被查询过，那这个区间一定是它的答案。因此<u>**并查集是针对查询数组构建**</u>的，如果查询数组中的某个元素已经查询过，就让它的父节点指向它右边的点。
+
+​	在遍历到某个区间时，区间左侧定义为l，右侧定义为r。这时要在查询数组中<u>**找到所有在l到r之间的元素**</u>。这显然需要对查询数组进行排序，从小到大排序，注意要把值和下标当成pair一起排序。排序后可以每次遍历区间时，用二分查找找到查询数组中第一个>=区间左端点l的元素。find可以同时判断它是否被查询过，而且找到它右边第一个没被查询过的元素下标。找到后要判断一下这个元素的大小是不是比区间右端点r大，如果大了那这个区间就结束查询，继续遍历去找下一个区间。
+
+### 7.6 边权并查集(带权值的并查集)
+
+[399. 除法求值](https://leetcode.cn/problems/evaluate-division/)：由于要记录x/y的值k，并且由并查集的思想可知，x和y要在同一集合，会有一个公共的父节点。对于任意两点 *x*,*y*，假设它们在并查集中具有共同的父亲 *f*，且 *v*[*x*]/*v*[*f*]=*a*,*v*[*y*]/*v*[*f*]=*b*，则 *v*[*x*]/*v*[*y*]=*a*/*b*。所以节点的权值w定义为节点的取值和其父节点的取值之间的比值。<img src="images\LeetcodeLearningNotes\image-20250828205208800.png" alt="image-20250828205208800" width="33%;" />
+
+​	其它细节：用一个哈希表存储给每个string分配的节点编号，还要注意在find（）和merge（）中都要对对应节点的wt权值进行更新。
+
+## 八、树状数组和线段树
+
+
 
 # 网格图
 
@@ -1558,7 +1782,7 @@ search中，
 
 ​	所以g[i]表示以i为起始点，堆中放的是终点和最短路径。
 
-<img src="images\LeetcodeLearningNotes\image-20250824221941985.png" alt="image-20250824221941985" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\image-20250824221941985.png" alt="image-20250824221941985" width="33%;" />
 
 ![image-20250824222253111](images\LeetcodeLearningNotes\image-20250824222253111.png)
 
@@ -1616,13 +1840,13 @@ search中，
 
 最终排序的结果是：
 
-<img src="images\LeetcodeLearningNotes\1738131168-tWFNGZ-006-toposort.png" alt="图论题单 图论算法 图论题目 LeetCode 力扣图论 灵茶山艾府" style="zoom:33%;" />
+<img src="images\LeetcodeLearningNotes\1738131168-tWFNGZ-006-toposort.png" alt="图论题单 图论算法 图论题目 LeetCode 力扣图论 灵茶山艾府" width="33%;" />
 
 每条边都是：
 
 ​	从排在前面的点，指向排在后面的点。即对于任意有向边 *x*→*y*，*x* 一定在 *y* 之前。
 
-<img src="images\LeetcodeLearningNotes\image-20250825173432627.png" alt="image-20250825173432627" style="zoom:50%;" /><img src="images\LeetcodeLearningNotes\image-20250825173455806.png" alt="image-20250825173455806" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250825173432627.png" alt="image-20250825173432627" width="50%;" /><img src="images\LeetcodeLearningNotes\image-20250825173455806.png" alt="image-20250825173455806" width="50%;" />
 
 ### 2.1 拓扑排序
 
@@ -1636,13 +1860,13 @@ search中，
 
 ​	分为两种情况，第一种是基环大于2：
 
-<img src="images\LeetcodeLearningNotes\1641096462-IsWZUX-1.png" style="zoom: 50%;" />
+<img src="images\LeetcodeLearningNotes\1641096462-IsWZUX-1.png" width="50%;" />
 
 ​	这种情况直接就是取环的大小。哪怕链再长也没用，比如2后面还有5，6，7，8，这样8到7到6到5到2到1，看着长度是5，但1喜欢的0不在其中，1是不会来参加会议的。
 
 ​	第二种是基环等于2，也就是只有两个节点：
 
-<img src="images\LeetcodeLearningNotes\1641096473-JtGBgY-3.png" alt="3.png" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\1641096473-JtGBgY-3.png" alt="3.png" width="50%;" />
 
 ​	假设0和1先坐下，0在左1在右，0在左边还可以接着坐2，4，5，也就是找0反图最长的链，同理1也是这样操作，找到的是6。其实5和6不用有什么关系
 
@@ -1652,8 +1876,8 @@ search中，
 
 ![image-20250825234930557](images\LeetcodeLearningNotes\image-20250825234930557.png)
 
-<img src="images\LeetcodeLearningNotes\image-20250826000408422.png" alt="image-20250826000408422" style="zoom:50%;" />
-<img src="images\LeetcodeLearningNotes\image-20250826000547134.png" alt="image-20250826000547134" style="zoom:50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250826000408422.png" alt="image-20250826000408422" width="50%;" />
+<img src="images\LeetcodeLearningNotes\image-20250826000547134.png" alt="image-20250826000547134" width="50%;" />
 ![image-20250826000511433](images\LeetcodeLearningNotes\image-20250826000511433.png)
 
 [2127. 参加会议的最多员工数](https://leetcode.cn/problems/maximum-employees-to-be-invited-to-a-meeting/)：太难了
@@ -1667,4 +1891,271 @@ search中，
 
 
 ## 四、最小生成树
+
+涉及到 Kruskal 算法和 Prim 算法。前者一般用于稀疏图，后者一般用于稠密图。
+
+最小生成树用于解决“如何用最小的代价把所有的点连通起来”的问题。注意必须是**无向连通图**。有向图里对应MST的问题是**最小生成树形（MSA）**
+
+> 无向连通图的定义是任意两点之间都能找到路径。
+
+克鲁斯卡尔算法是用并查集，先把边全部按从小到大排序，之后遍历这些边，每次把对应的两个顶点所在的集合合并，累加边长，最后即为结果。
+
+普里姆算法类似迪杰斯特拉，从任意顶点开始皆可，注意挑的不是边，而是点。准备两个集合（数组），一个放已经被选的点，一个放还没被选的点。每次从还没被选的点中选一个距离【已经被选的点】这个集合最近的点。
+
+![普里姆算法](images\LeetcodeLearningNotes\1611023745-EuGMdh-image.png)
+
+
+
+[1584. 连接所有点的最小费用](https://leetcode.cn/problems/min-cost-to-connect-all-points/)：rank用于优化比较有意思，rank表示树的高度，由于在合并时需要把x的根节点的父节点调成y的根节点（或者反过来），出于优化考虑，每次都尽量把矮树挂到高树上；如果矮树挂到高树上，高树的rank不变；如果两棵树的rank一样，那无论怎么挂，原先的rank都会+1，看图示：
+
+```
+高树：
+       X (root, height = H)
+      / \
+     ... ...
+
+矮树：
+       Y (root, height = h)
+      / \
+     ... ...
+
+合并后：
+       X
+      /|\
+    ... Y
+       / \
+      ...
+```
+
+克里姆算法更新每个点与【已经被选的点组成的集合B】之间的最短距离的方式也比较有意思（其实就是朴素迪杰斯特拉）。姑且给这个lowcost数组长度设置为n(n为顶点数)。随便挑一个初始顶点，假设下标是0这个点，先算一遍其它所有顶点距离0的距离，这就作为lowcost各下标的初始值，因为现在集合里只有0，所以它们和0的距离就是和【B】最小的距离。之后每轮：
+
+- 挑选lowcost最小的下标minIdx放入【B】
+- 遍历【未被选的点的集合A】，比较它们和minIdx的距离有没有小于lowcost中它们之前的值，如果小于就更新一下。
+
+
+
+<img src="images\LeetcodeLearningNotes\image-20250829000828075.png" alt="image-20250829000828075" width="50%;" />
+
+# 位运算
+
+
+
+# 链表、二叉树与回溯
+
+## 一、链表
+
+### 1.1 遍历链表
+
+[1290. 二进制链表转整数](https://leetcode.cn/problems/convert-binary-number-in-a-linked-list-to-integer/)：秒了
+
+### 1.2 删除节点
+
+**如何优雅删除？**
+
+如果头节点可能被删除，那么可以在头节点之前加一个【哨兵】节点，这样可以无需特判头节点被删除的情况，简化代码逻辑。
+
+[203. 移除链表元素](https://leetcode.cn/problems/remove-linked-list-elements/)：模板题
+
+[237. 删除链表中的节点](https://leetcode.cn/problems/delete-node-in-a-linked-list/)：不给前驱指针，删除链表节点。直接让这个节点等于它的next节点即可实现“删除”。
+
+### 1.3 插入节点
+
+[2807. 在链表中插入最大公约数](https://leetcode.cn/problems/insert-greatest-common-divisors-in-linked-list/)：秒了
+
+### 1.4 反转链表
+
+[206. 反转链表](https://leetcode.cn/problems/reverse-linked-list/)：模板题，需要至少3个辅助节点。
+
+<img src="images\LeetcodeLearningNotes\image-20250829170120301.png" alt="image-20250829170120301" width="33%;" />
+
+[92. 反转链表 II](https://leetcode.cn/problems/reverse-linked-list-ii/)：模板题
+
+![image-20250829173832465](images\LeetcodeLearningNotes\image-20250829173832465.png)
+
+​	当left==1时，不存在p0，所以在最开始加一个【哨兵】。
+
+### 1.5 前后指针
+
+[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)：一般来说如果有可能删除头节点，就需要加【哨兵】。这题主要是找倒数第n个节点在哪里，由于要删除，还需知道它的前一个——即倒数第n+1个节点。最慢的方法是遍历，知道整个链表有多长，就很容易找倒数n和n+1了。还有一种方法是前后指针：
+
+<img src="images\LeetcodeLearningNotes\image-20250829181236886.png" alt="image-20250829181236886" width="33%;" />
+
+​	先定义right指针让它往右走n步后，再创建left指针，二者同时向右。这样二者之间的距离始终是n。当right节点抵达链表终点时(即倒数第0个节点)，left所在的节点一定是倒数第n+1.
+
+### 1.6 快慢指针
+
+#### 求中间节点
+
+​	为了求整个链表最中间的节点（链表长度为偶数时，中间偏右的那个），从头节点开始，定义一个慢指针一个快指针，慢指针一次走1步，快指针一次走两步，当快指针指向nullptr时，数学上可以证明此时慢指针指向的是最中间的节点。
+
+[876. 链表的中间结点](https://leetcode.cn/problems/middle-of-the-linked-list/)：
+
+#### 判环是否存在
+
+​	如果快指针能追上慢指针，则一定有环	
+
+[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+
+#### 判环的入口
+
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
+​	有个结论，快慢指针在环中相遇时，慢指针一定还没走完一圈。假设快指针走了k圈。
+
+<img src="images\LeetcodeLearningNotes\image-20250829184758723.png" alt="image-20250829184758723" width="33%;" />
+
+​	由因为快指针走的距离是慢指针的2倍，所以相遇时有：
+
+```
+(a+b)*2 = (b+c)*k + a + b
+=> a+b = (b+c)*k
+右边提出一个b+c
+=> a+b = (b+c)*(k-1) + b+c
+=> a-c = (b+c)*(k-1)
+```
+
+​	这时再让一个指针head从头和slow指针同步开始走(速度一样)，当slow走c步时，head和入口之间的距离**一定是环长的倍数**。既然是环长的倍数，那它俩继续走，**一定会在入口相遇**。这时head指向的就是入口节点。
+
+<img src="images\LeetcodeLearningNotes\image-20250829185513244.png" alt="image-20250829185513244" width="33%;" />
+
+### 1.7 双指针
+
+[328. 奇偶链表](https://leetcode.cn/problems/odd-even-linked-list/)：秒了
+
+### 1.8 合并链表
+
+[21. 合并两个有序链表](https://leetcode.cn/problems/merge-two-sorted-lists/)：迭代和递归两种方法，注意递归可读性很差，明确这个递归函数在做什么，它在把传入的a节点和b节点从中挑一个作为头节点
+
+![image-20250829222139285](images\LeetcodeLearningNotes\image-20250829222139285.png)
+
+## 二、二叉树
+
+### 2.1 遍历二叉树
+
+- [144. 二叉树的前序遍历](https://leetcode.cn/problems/binary-tree-preorder-traversal/)
+- [94. 二叉树的中序遍历](https://leetcode.cn/problems/binary-tree-inorder-traversal/)
+- [145. 二叉树的后序遍历](https://leetcode.cn/problems/binary-tree-postorder-traversal/)
+
+### 2.2 自顶向下DFS（先序遍历）
+
+- [104. 二叉树的最大深度](https://leetcode.cn/problems/maximum-depth-of-binary-tree/)
+- [111. 二叉树的最小深度](https://leetcode.cn/problems/minimum-depth-of-binary-tree/)
+
+### 2.3 自底向上DFS（后序遍历）
+
+- [100. 相同的树](https://leetcode.cn/problems/same-tree/)
+- [101. 对称二叉树](https://leetcode.cn/problems/symmetric-tree/)
+- [110. 平衡二叉树](https://leetcode.cn/problems/balanced-binary-tree/)
+
+### 2.4 自底向上DFS 删点
+
+[1325. 删除给定值的叶子节点](https://leetcode.cn/problems/delete-leaves-with-a-given-value/) 1407：秒了
+
+### 2.5 有递有归
+
+[1080. 根到叶路径上的不足节点](https://leetcode.cn/problems/insufficient-nodes-in-root-to-leaf-paths/)：牵扯到数学证明，当认识到：一个节点的子节点如果都被删去，它也需要被删去时就好写了。
+
+### 2.6 二叉树的直径
+
+[543. 二叉树的直径](https://leetcode.cn/problems/diameter-of-binary-tree/)：秒
+
+### 2.7 回溯
+
+[257. 二叉树的所有路径](https://leetcode.cn/problems/binary-tree-paths/)：回溯的核心是 **进入时选择，退出时撤销**。
+
+### 2.8 最近公共祖先
+
+![image-20250830023732413](images\LeetcodeLearningNotes\image-20250830023732413.png)
+
+核心理解难点是只要遇到这两个要找的节点的其中之一，直接就return
+
+![image-20250830024457676](images\LeetcodeLearningNotes\image-20250830024457676.png)
+
+[235. 二叉搜索树的最近公共祖先](https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-search-tree/)：
+
+![image-20250830024827837](images\LeetcodeLearningNotes\image-20250830024827837.png)
+
+​	二叉搜索树可以加速判断，每次能直接确定【答案在当前节点左下边】/【答案在右下边】/【答案就是当前节点】。
+
+### 2.9 二叉搜索树
+
+![image-20250830022329092](images\LeetcodeLearningNotes\image-20250830022329092.png)
+
+[700. 二叉搜索树中的搜索](https://leetcode.cn/problems/search-in-a-binary-search-tree/)：
+
+### 2.10 创建二叉树
+
+[108. 将有序数组转换为二叉搜索树](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/)：给你一个整数数组 `nums` ，其中元素已经按 **升序** 排列，请你将其转换为一棵 平衡 二叉搜索树。
+
+​	运用二分的思想，每次取中间的作为根节点，然后对左右进行dfs
+
+# 字符串
+
+## 一、KMP（前缀的后缀）
+
+​	KMP算法用于在文本串 text 中查找模式串 pattern，返回所有成功匹配的位置（pattern[0] 在 text 中的下标）。
+
+需要了解【真前缀】和【真后缀】，【真前缀】是字符串s的前缀，但它不能是s本身，s的前缀可以是s本身；真后缀同理。
+
+**思路**
+
+<img src="images\LeetcodeLearningNotes\image-20250829005558000.png" alt="image-20250829005558000" width="33%;" />
+
+> [部分匹配表](https://zhida.zhihu.com/search?content_id=81222960&content_type=Answer&match_order=1&q=部分匹配表&zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3NTY1NzI1ODMsInEiOiLpg6jliIbljLnphY3ooagiLCJ6aGlkYV9zb3VyY2UiOiJlbnRpdHkiLCJjb250ZW50X2lkIjo4MTIyMjk2MCwiY29udGVudF90eXBlIjoiQW5zd2VyIiwibWF0Y2hfb3JkZXIiOjEsInpkX3Rva2VuIjpudWxsfQ.R_h1hzCOhhlDCCZKZiI4bQYoPc3YTLTLbMViJpPO9OM&zhida_source=entity)(Partial Match Table)
+
+<img src="images\LeetcodeLearningNotes\v2-03a0d005badd0b8e7116d8d07947681c_1440w.webp" alt="img" width="33%;" />
+
+next数组的i开始看作取模式串的前i位，比如next[2]就是前两位；next[i]的值表示模式串前i位的border长度（最长公共真前后缀长度）。
+
+<img src="images\LeetcodeLearningNotes\image-20250829011003035.png" alt="image-20250829011003035" width="33%;" />
+
+在ab里面，pmt的长度自然是0.
+
+在图1.12里面，当s[i]!=p[j]，j的值是6，它前面有6个元素，所以直接看next[j]是多少，哦，值是4，然后把p的前缀和后缀对齐，得到（b），i不变的情况下，直接把j改成next[j].当j成功走到p的末尾，那代表匹配成功。
+
+<img src="images\LeetcodeLearningNotes\image-20250829013643588.png" alt="image-20250829013643588" width="33%;" />
+
+<img src="images\LeetcodeLearningNotes\image-20250829013655234.png" alt="image-20250829013655234" width="33%;" />
+
+需要注意next[0]=-1，表示已经不能再回退了，i必须要往右移。
+
+以下是**next数组生成**的模板，其中运用了kmp的思想：
+
+```c++
+vector<int> next(m + 1, 0); // m是模式串的长度
+next[0] = -1;
+for (int i = 1, j = 0; i < m;) {
+    if (j == -1 || p[i] == p[j]) { // p是模式串
+        j++;
+        i++;
+        next[i] = j;
+        continue;
+    }
+    j = next[j];
+}
+```
+
+调用next数组找第一个匹配项的下标模板如下，
+
+```c++
+int i = 0;
+int j = 0;
+while(i < n) {
+    if (j == m) return i - m;
+    if (j == -1 || s[i] == p[j]) { // s是主串
+        i++;
+        j++;
+        continue;
+    }
+    j = next[j];
+}
+if (j == m) return i - m;
+return -1; // -1表示没找到
+```
+
+[28. 找出字符串中第一个匹配项的下标](https://leetcode.cn/problems/find-the-index-of-the-first-occurrence-in-a-string/) ：**模板题**
+
+[1392. 最长快乐前缀](https://leetcode.cn/problems/longest-happy-prefix/)难度1876 ：秒了，本质是求next数组
+
+[3008. 找出数组中的美丽下标 II](https://leetcode.cn/problems/find-beautiful-indices-in-the-given-array-ii/) 难度2016：30min 秒了
 
